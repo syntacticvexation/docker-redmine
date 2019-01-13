@@ -1,7 +1,7 @@
 FROM sameersbn/ubuntu:14.04.20170711
 MAINTAINER sameer@damagehead.com
 
-ENV RUBY_VERSION=2.3 \
+ENV RUBY_VERSION=2.5 \
     REDMINE_VERSION=3.4.6 \
     REDMINE_USER="redmine" \
     REDMINE_HOME="/home/redmine" \
@@ -29,7 +29,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E1DD270288B4E6030699E45F
       libmysqlclient18 libpq5 libyaml-0-2 libcurl3 libssl1.0.0 uuid-dev xz-utils \
       libxslt1.1 libffi6 zlib1g gsfonts \
  && update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX \
- && gem install --no-document bundler \
+ && gem install --no-document bundler -v '1.17.3'\
  && rm -rf /var/lib/apt/lists/*
 
 COPY assets/build/ ${REDMINE_BUILD_DIR}/
